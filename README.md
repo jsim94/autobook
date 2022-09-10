@@ -1,3 +1,10 @@
+# --PROJECT COLD--
+
+### For the time being this project exceeds the scope of the purpose of it's creation. Database models are functioning, UI needs to be created and all views need to be routed. Tests then need to be created and extra features such as direct messaging and user uploaded images need to be implemented. See https://github.com/jsim94/autolog for a reduced scope spin of this project.
+
+<br />
+<br />
+
 # Autobook
 
 ## What goal is the site designed to achieve?

@@ -1,13 +1,16 @@
 from datetime import datetime
-from sqlalchemy.dialects.postgresql import ARRAY, UUID, ENUM
+from sqlalchemy.dialects.postgresql import ENUM
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
-
+from app import app
 from . import db
 from .mixins import uuid_pk, timestamps
 from .enums import FriendStatus
 
 bcrypt = Bcrypt()
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 
 class User(uuid_pk, timestamps, db.Model):
@@ -33,6 +36,15 @@ class User(uuid_pk, timestamps, db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.username
+
+    @classmethod
+    def signup(cls, first_name, last_name, username, email, password):
+        '''Create new user:
+            Verify args and commit user to database. Return user'''
+
+    @classmethod
+    def login(cls, username, password):
+        ''' Verify hashed password and return found user or None'''
 
 
 class Friend(db.Model):

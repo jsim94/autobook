@@ -4,16 +4,9 @@ ALLOWED_EXTENSIONS = {'jpg', 'jpeg', 'png'}
 
 import os
 
-from functools import wraps
-from flask import Flask, render_template, request, flash, redirect, session, g, url_for
+from flask import Flask
 from flask_login import LoginManager
 from flask_debugtoolbar import DebugToolbarExtension
-from werkzeug.utils import secure_filename
-
-from views import home, profile, project
-# from forms import SignupForm, LoginForm
-from models import db, connect_db
-from validators import allowed_file
 
 
 app = Flask(__name__)
@@ -32,8 +25,9 @@ app.config.update(
 
 toolbar = DebugToolbarExtension(app)
 
-login_manager = LoginManager()
-login_manager.init_app(app)
+
+from models import connect_db
+from views import home, profile, project
 
 connect_db(app)
 
